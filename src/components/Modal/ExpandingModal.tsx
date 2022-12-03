@@ -6,7 +6,7 @@ import { GestureResponderEvent, PanResponderGestureState, Text } from 'react-nat
 
 const ModalView = styled.View`
     width: 95%
-    height: 65%
+    height: 60%
     align-self: center
 `
 

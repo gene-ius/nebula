@@ -1,5 +1,5 @@
 import React , { FunctionComponent } from 'react'
-import { GestureResponderEvent, ImageSourcePropType, ImageStyle, StyleProp, ViewStyle } from 'react-native'
+import { GestureResponderEvent, StyleProp, ViewStyle } from 'react-native'
 import Svg , { Path } from 'react-native-svg'
 import styled from 'styled-components/native'
 
@@ -24,17 +24,9 @@ const IconContainer = styled.View`
     align-items: center
 `
 
-const svgProps = {
-    width: "100%",
-    height: "100%",
-    fill: "#AFAFAF"
-}
-
 interface ButtonProps {
     onPress: ((event: GestureResponderEvent) => void ) | undefined
     btnStyles?: StyleProp<ViewStyle>
-    icon?: ImageSourcePropType
-
 }
 
 

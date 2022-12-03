@@ -11,7 +11,8 @@ const ButtonView = styled.TouchableOpacity`
     background-color: ${colors.white};
     width: 100%
     padding: 20px;
-    border-radius: 35px;
+    border-radius: 35px;'
+    boxShadow: 0px 2px 1px ${colors.shadow}
 `
 
 //types

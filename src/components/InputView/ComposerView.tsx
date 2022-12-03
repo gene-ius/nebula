@@ -7,6 +7,7 @@ import RegularButton from '../Buttons/RegularButton';
 import RegularText from '../Text/RegularText';
 import { colors } from '../colors';
 import { GestureResponderEvent, StyleProp, TextInput, TextStyle } from 'react-native';
+import ToggleIconButton from '../Buttons/ToggleIconButton';
 
 
 const EditorView = styled.View`
@@ -17,16 +18,17 @@ const EditorView = styled.View`
 
 const InputView = styled.View`
     width: 97%
-    height: 72%
-    paddding: 2% 2% 2% 2% 
+    height: 75%
+    marginTop: 2%
     border-radius: 30px
     align-self: center
     background-color: ${colors.offwhite}
 `
 
 const ButtonView = styled.View`
-    flexDirection: row-reverse
-    gap: 
+    marginTop: 5%
+    flexDirection: row
+    justifyContent: space-around
 
 `
 
@@ -34,7 +36,7 @@ const HeaderInput = styled.TextInput`
     font-size: 18px
     margin-left: 5%
     marginRight: 5%
-    margin-top: 5%
+    margin-top: 8%
     borderBottomColor: ${colors.graylight}
     borderBottomWidth: 1px
 
@@ -56,13 +58,8 @@ interface ComposerProps {
 
   
 
-const attachBtnStyleProps : StyleProp<TextStyle> = {
-   marginTop: "4%",
-   width: '25%', 
-}
 
 const logBtnStyleProps : StyleProp<TextStyle> = {
-    marginTop: "4%",
     width: '30%' 
  }
 
@@ -78,28 +75,15 @@ const ComposerView: FunctionComponent<ComposerProps> = (props) => {
   return (
     <EditorView>
         <RegularText textStyles={{fontSize: 24, color:colors.graydark, paddingBottom: 5, marginLeft: '5%'}}>Draft Your Idea ...</RegularText>
-        {/* <QuillEditor 
-            ref={editor}
-            autoSize={true}
-            quill={{
-                placeholder: "What are you thinking?",
-                theme: 'snow',
-                modules: { toolbar: [ { 'header': [1, 2, false, "large"] },'bold', 'italic', 'underline', 'strike', { 'list': 'ordered'}, { 'list': 'bullet' }, { 'color': [] },'image']}
-                }}
-        /> */}
-        {/* <TextInput placeholder='Title Your Thought' style={headerStyleProps}/> */}
         <InputView>
-            
             <HeaderInput placeholder='Title Your Thought...'/>
             <BodyInput multiline placeholder='What are you thinking?'></BodyInput>
-
-            {/* <TextInput multiline numberOfLines={2} placeholder='What are you thinking?' style={inputStyleProps} onChangeText={(text) => {setIdea(text) , console.log(text)}}/> */}
         </InputView>
         <ButtonView>
-        <RegularButton btnStyles={attachBtnStyleProps}>ATTACH</RegularButton>
-        <RegularButton onPress={() => props.submitHandler(idea)} btnStyles={logBtnStyleProps}>LOG</RegularButton>
+            <ToggleIconButton onPress={()=> {}} icon={'camera'} />
+            <ToggleIconButton onPress={()=> {}} icon={'upload'} />
+            <RegularButton onPress={() => props.submitHandler(idea)} btnStyles={logBtnStyleProps}>LOG</RegularButton>
         </ButtonView>
-       
     </EditorView>
   )
 }
