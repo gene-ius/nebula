@@ -24,10 +24,12 @@ export const gradients = {
     navbar: ['#3A2687', '#9C2CD0'],
     modal: ['#9C2CD0', '#9C2CD0'],
     slidingmodal: ['#0F1013', '#3A2687'],
+    footerbutton: ['#DE3BF9', '#3A2687']
 }
 
 export const positions = {
     top: {x: 0.5, y: 0},
-    twothirds: {x: 0.5, y: 0.552}, 
+    half: {x: 0.5, y: 0.55},
+    twothirds: {x: 0.5, y: 0.33},
     bottom: {x:0.5, y:1}
 }

@@ -1,10 +1,21 @@
-import React , { FunctionComponent, useState } from 'react'
+import React , { FunctionComponent} from 'react'
 import styled from 'styled-components/native'
 import Modal , { Direction , OnSwipeCompleteParams}  from 'react-native-modal'
-import { colors } from '../colors'
-import { GestureResponderEvent, PanResponderGestureState, Text } from 'react-native'
+import { colors , gradients ,positions } from '../colors'
+import { GestureResponderEvent, PanResponderGestureState } from 'react-native'
 import SideTabButton from '../Buttons/SideTabButton'
+import { LinearGradient } from 'expo-linear-gradient'
 
+const Gradient = styled(LinearGradient).attrs({
+  colors: gradients.headerbutton,
+  start:  positions.bottom,
+  end: positions.twothirds
+})`
+  width: 100%
+  height: 100%
+  borderBottomLeftRadius: 15,
+
+`
 
 const CardContainer = styled.View`
   width: 90%
@@ -56,8 +67,11 @@ const SlideOutModal: FunctionComponent<SwipeModalProps>  = (props) => {
           <ModalView>
             {props.tab !== null ? <SideTabButton icon='filter' onPress={props.closeHandler}/> : null}
             <CardContainer>
+              <Gradient>
               {props.children}
+              </Gradient>
             </CardContainer>
+            
           </ModalView>
         </Modal>
     

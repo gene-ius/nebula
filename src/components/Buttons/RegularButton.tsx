@@ -11,20 +11,11 @@ import RegularText from "../Text/RegularText";
 const ButtonView = styled.TouchableOpacity`
     align-items: center;
     width: 100%
-    padding: 20px;
-    border-radius: 35px;'
+    height: 100%
     boxShadow: 0px 2px 1px ${colors.shadow}
 `
 
 
-const gradientstyle : StyleProp<ViewStyle> = {
-    width: "100%",
-    borderRadius: 35,
-    alignItems: "center",
-    paddingBottom: "5%",
-    paddingTop: "5%"
-    
-}
 
 //types
 interface ButtonProps {
@@ -36,6 +27,15 @@ interface ButtonProps {
 }
 
 const RegularButton: FunctionComponent<ButtonProps> =  (props) => {
+    const gradientstyle : StyleProp<ViewStyle> = {
+        width: "100%",
+        borderRadius: props.btnStyles['borderRadius'],
+        alignItems: "center",
+        justifyContent: "center",
+        flex: 1
+        
+    }
+    
     return (
        
          <ButtonView onPress={props.onPress} style={props.btnStyles}>
@@ -43,7 +43,7 @@ const RegularButton: FunctionComponent<ButtonProps> =  (props) => {
                 colors={props.gradient}
                 style={gradientstyle}
             >
-                    <RegularText textStyles={props.textStyles}>ENTER</RegularText> 
+                    <RegularText textStyles={props.textStyles}>{props.children}</RegularText> 
             </LinearGradient>             
         </ButtonView>
     

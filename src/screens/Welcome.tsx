@@ -52,8 +52,8 @@ const Welcome: FunctionComponent = () => {
                         <RegularText>your thoughts, visualized.</RegularText>
                 </TopSection>
                 <BottomSection>
-                    <RegularButton gradient={gradients.landingprimary} onPress={undefined}>
-                        enter your mind...
+                    <RegularButton gradient={gradients.landingprimary} onPress={undefined} btnStyles={{borderRadius: 35, height: "30%"}}>
+                        E N T E R
                     </RegularButton>
                 </BottomSection>
                 </Gradient>

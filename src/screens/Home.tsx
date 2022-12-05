@@ -9,11 +9,12 @@ import {LinearGradient} from 'expo-linear-gradient'
 //custom components
 import { gradients , positions} from '../components/colors'
 import { Container, FlexContainer } from '../components/shared'
-import ComposeButton from '../components/Buttons/ComposeButton'
+import FooterButton from '../components/Buttons/FooterButton'
 import SideTabButton from '../components/Buttons/SideTabButton'
 import SlideOutModal from '../components/Modal/SlideOutModal'
 import ExpandingModal from '../components/Modal/ExpandingModal'
 import ComposerView from '../components/InputView/ComposerView'
+import NewsBanner from '../components/Footer/NewsBanner'
 
 //Test Canvas Components
 import TestBox from '../components/3DCanvas/TestBox'
@@ -63,11 +64,15 @@ const ButtonsContainer = styled(FlexContainer)`
 `
 
 const FooterContainer = styled(Container)`
-    justify-content: center
-    align-items: center
-    height: 80px
-
-
+    width: 100%
+    height: 30%
+    flex-direction: row
+    justifyContent: space-between
+    paddingLeft: 3.6%
+    paddingRight: 3.6%
+    paddingBottom: 3%
+    flex: 0
+    zIndex: 1
 `
 
 //types
@@ -75,6 +80,7 @@ const FooterContainer = styled(Container)`
 interface Idea {
     header: string
     body: string
+    mood: string
     image?: undefined
 }
 
@@ -95,10 +101,6 @@ const Home: FunctionComponent = () => {
         
     }
 
-    const composerUpSwipe = () => {
-        //TODO: submit note
-        setComposerModalVisible(!isComposerModalVisible)
-    }
 
     const composerToggle = () => {
         setComposerModalVisible(!isComposerModalVisible)
@@ -143,8 +145,10 @@ const Home: FunctionComponent = () => {
                 </Canvas >
             </CanvasContainer>
             <FooterContainer>
-                <ComposeButton onPress={composerToggle}/>
+                <FooterButton icon={'shuffle'} viewBox={'0 0 24 24'}onPress={() => {}}/>
+                <FooterButton icon={'addsquare'} viewBox={'0 0 24 24'} onPress={composerToggle}/>
             </FooterContainer>
+            <NewsBanner/>
             </Gradient>
         </HomeContainer> 
     </>

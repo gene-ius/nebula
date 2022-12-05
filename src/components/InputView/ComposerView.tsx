@@ -8,6 +8,7 @@ import RegularText from '../Text/RegularText';
 import { colors, gradients } from '../colors';
 import { GestureResponderEvent, StyleProp, TextInput, TextStyle } from 'react-native';
 import ToggleIconButton from '../Buttons/ToggleIconButton';
+import { processFontFamily } from 'expo-font';
 
 
 const EditorView = styled.View`
@@ -51,7 +52,10 @@ const BodyInput = styled.TextInput`
 `
 
 const logBtnStyleProps : StyleProp<TextStyle> = {
-    width: '30%' 
+    width: "50%",
+    borderRadius: 17,
+    borderColor: colors.white,
+    borderWidth: 1
  }
 
 
@@ -78,7 +82,7 @@ const ComposerView: FunctionComponent<ComposerProps> = (props) => {
         <ButtonView>
             <ToggleIconButton onPress={()=> {}} icon={'camera'} />
             <ToggleIconButton onPress={()=> {}} icon={'upload'} />
-            <RegularButton gradient={gradients.landingsecondary} onPress={() => props.submitHandler(idea)} btnStyles={logBtnStyleProps}>LOG</RegularButton>
+            <RegularButton gradient={gradients.landingsecondary} onPress={() => props.submitHandler(idea)} btnStyles={logBtnStyleProps} textStyles={{fontFamily:"ChakraPetch-Light", fontSize:20}}>LOG IDEA</RegularButton>
         </ButtonView>
     </EditorView>
   )
