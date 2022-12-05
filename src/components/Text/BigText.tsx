@@ -6,9 +6,10 @@ import styled from 'styled-components/native'
 import { colors } from "../colors"
 
 const StyledText = styled.Text`
-    font-size: 48px;
-    color: ${colors.gray};
-    text-align: left;
+    font-size: 96px;
+    color: ${colors.white};
+    text-align: center;
+    font-family: Raleway-Dots 
     
 `
 

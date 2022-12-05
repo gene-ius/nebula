@@ -1,16 +1,25 @@
 import React , { FunctionComponent } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import styled from 'styled-components/native'
+import {LinearGradient} from 'expo-linear-gradient'
 
 //custom components 
-import { colors } from '../components/colors'
+import { gradients , positions} from '../components/colors'
 import { Container } from '../components/shared'
 import BigText from '../components/Text/BigText'
-import SmallText from '../components/Text/SmallText'
+import RegularText from '../components/Text/RegularText'
 import RegularButton from '../components/Buttons/RegularButton'
 
+const Gradient = styled(LinearGradient).attrs({
+    colors: gradients.background,
+    start:  positions.twothirds,
+    end: positions.bottom
+})`
+    width: 100%
+    height: 100%
+
+`
 const WelcomeContainer = styled(Container)`
-    background-color: ${colors.offwhite};
     justify-content: space-between;
     width: 100%
     height 100%
@@ -20,7 +29,6 @@ const TopSection = styled.View`
     width: 100%;
     flex: 1;
     max-height: 60%;
-    padding: 25px;
     align-items: center;
     margin-top: 75%
 `
@@ -36,17 +44,19 @@ const Welcome: FunctionComponent = () => {
 
     return (
         <>
-            <StatusBar style='dark'/>
+            <StatusBar style='light'/>
             <WelcomeContainer>
+                <Gradient>
                 <TopSection>
-                    <BigText>NEBULA</BigText>
-                    <SmallText>your thoughts, visualized.</SmallText>
+                        <BigText>NEBULA</BigText>
+                        <RegularText>your thoughts, visualized.</RegularText>
                 </TopSection>
                 <BottomSection>
-                    <RegularButton onPress={undefined}>
+                    <RegularButton gradient={gradients.landingprimary} onPress={undefined}>
                         enter your mind...
                     </RegularButton>
                 </BottomSection>
+                </Gradient>
             </WelcomeContainer>
         </>
     )

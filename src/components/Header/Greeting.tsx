@@ -31,7 +31,7 @@ const Greeting: FunctionComponent<GreetingProps> = (props) => {
         <StyledView>
             <RegularText 
                 textStyles={[{
-                    color: colors.gray,
+                    color: colors.white,
                     fontSize: 26,
                 },
                 props.mainTextStyles
@@ -40,7 +40,7 @@ const Greeting: FunctionComponent<GreetingProps> = (props) => {
             </RegularText>
             <SmallText
                 textStyles= {[{
-                    color: colors.graydark,
+                    color: colors.white,
                     fontSize: 16
                 },
                 props.subTextStyles

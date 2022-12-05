@@ -1,42 +1,32 @@
 import { useEffect } from 'react';
-import { StyleSheet, Text, View, KeyboardAvoidingView, TextInput } from 'react-native';
 import { useLogging } from './src/hooks/useLogging';
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
 
 //React Navigation Lib
 import RootStack from './src/navigators/RootStack';
 
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    "Raleway-Dots": require("./assets/fonts/RalewayDots-Regular.ttf"),
+    "Raleway-ExtraLight": require("./assets/fonts/Raleway-ExtraLight.ttf"),
+    "Raleway-Regular": require("./assets/fonts/Raleway-Regular.ttf"),
+    "ChakraPetch-Light": require("./assets/fonts/ChakraPetch-Light.ttf")
+  })
   
   const [logging] = useLogging('Home')
 
   useEffect(() => {
       logging.info('Loading Home')
   }, [logging])
+
+  if (!fontsLoaded) {
+    return <AppLoading/>
+  }
+
   return (
       <RootStack/>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5F5F5',
-    flexDirection: 'column'
-  },
-  header: {
-    paddingTop: 35,
-    paddingLeft: 12,
-    fontSize: 24,
-  },
-  inputContainer: {
-    width: 290,
-    height: 58,
-    backgroundColor: "white",
-    borderRadius: 35,
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  input: {
-  }
-  
-});
+

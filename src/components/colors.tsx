@@ -10,5 +10,24 @@ export const colors = {
     graylight: '#D1D1D1',
     graydark: '#4C4C4C',
     accent: '',
-    shadow: 'rgba(148, 148, 148, 0.5)'
+    shadow: 'rgba(0, 0, 0, 0.25)',
+    transparent: 'rgba(0, 0, 0, 0)',
+    backdark: "#0F1013"
+}
+
+export const gradients = {
+    background: ['#0F1013', '#2A2056'],
+    landingprimary: ['#3CE1EC', '#DE3BF9'],
+    landingsecondary: ['#3CEC8D','#3CE1EC'],
+    headerbutton: ['#3A2687','#0F1013'],
+    primaryactionbutton: ['#3A2687', '#DE3BF9'],
+    navbar: ['#3A2687', '#9C2CD0'],
+    modal: ['#9C2CD0', '#9C2CD0'],
+    slidingmodal: ['#0F1013', '#3A2687'],
+}
+
+export const positions = {
+    top: {x: 0.5, y: 0},
+    twothirds: {x: 0.5, y: 0.552}, 
+    bottom: {x:0.5, y:1}
 }

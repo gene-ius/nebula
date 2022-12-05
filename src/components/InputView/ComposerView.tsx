@@ -5,7 +5,7 @@ import QuillEditor from 'react-native-cn-quill';
 //components
 import RegularButton from '../Buttons/RegularButton';
 import RegularText from '../Text/RegularText';
-import { colors } from '../colors';
+import { colors, gradients } from '../colors';
 import { GestureResponderEvent, StyleProp, TextInput, TextStyle } from 'react-native';
 import ToggleIconButton from '../Buttons/ToggleIconButton';
 
@@ -50,18 +50,14 @@ const BodyInput = styled.TextInput`
     textAlign: justify
 `
 
+const logBtnStyleProps : StyleProp<TextStyle> = {
+    width: '30%' 
+ }
 
 
 interface ComposerProps {
     submitHandler: ((idea: string) => void)
 }
-
-  
-
-
-const logBtnStyleProps : StyleProp<TextStyle> = {
-    width: '30%' 
- }
 
 
 
@@ -77,12 +73,12 @@ const ComposerView: FunctionComponent<ComposerProps> = (props) => {
         <RegularText textStyles={{fontSize: 24, color:colors.graydark, paddingBottom: 5, marginLeft: '5%'}}>Draft Your Idea ...</RegularText>
         <InputView>
             <HeaderInput placeholder='Title Your Thought...'/>
-            <BodyInput multiline placeholder='What are you thinking?'></BodyInput>
+            <BodyInput multiline placeholder='What are you thinking?' onChange={() => setIdea}></BodyInput>
         </InputView>
         <ButtonView>
             <ToggleIconButton onPress={()=> {}} icon={'camera'} />
             <ToggleIconButton onPress={()=> {}} icon={'upload'} />
-            <RegularButton onPress={() => props.submitHandler(idea)} btnStyles={logBtnStyleProps}>LOG</RegularButton>
+            <RegularButton gradient={gradients.landingsecondary} onPress={() => props.submitHandler(idea)} btnStyles={logBtnStyleProps}>LOG</RegularButton>
         </ButtonView>
     </EditorView>
   )

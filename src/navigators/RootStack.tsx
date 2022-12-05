@@ -24,15 +24,16 @@ const RootStack: FunctionComponent = () => {
         <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{
+            headerTransparent: true,
             headerStyle: {
-                backgroundColor: colors.offwhite,
                 borderBottomWidth: 0,
                 shadowColor: 'transparent',
                 shadowOpacity: 0,
                 elevation: 0,
-                height: 90
+                height: 90,
+                backgroundColor: colors.shadow
             },
-            headerRightContainerStyle: {paddingRight: 10},
+            headerRightContainerStyle: {paddingRight: 10, paddingTop: 25},
             headerRight: () => (
                 <Profile 
                     onPress={() => {}}

@@ -19,7 +19,7 @@ const ModalView = styled.View`
   width: 100%
   height: 85%%
   margin-left: 10%
-  margin-top: 30%
+  margin-top: 20%
 
 
 `
@@ -30,6 +30,7 @@ interface SwipeModalProps {
   swipeDirection: Direction | Direction[]
   swipeThreshold: number
   onSwipeComplete: ((params: OnSwipeCompleteParams, gestureState: PanResponderGestureState) => void) | undefined
+  closeHandler: ((event: GestureResponderEvent) => void)
   hasBackdrop: boolean
   tab?: string | null
   children?: React.ReactNode
@@ -53,8 +54,9 @@ const SlideOutModal: FunctionComponent<SwipeModalProps>  = (props) => {
           hasBackdrop={props.hasBackdrop}
         >
           <ModalView>
-            {props.tab !== null ? <SideTabButton icon='filter' onPress={props.onSwipeComplete}/> : null}
+            {props.tab !== null ? <SideTabButton icon='filter' onPress={props.closeHandler}/> : null}
             <CardContainer>
+              {props.children}
             </CardContainer>
           </ModalView>
         </Modal>

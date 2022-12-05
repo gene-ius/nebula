@@ -4,9 +4,10 @@ import { OrbitControls, Environment } from '@react-three/drei/native'
 import { StatusBar } from 'expo-status-bar'
 import styled from 'styled-components/native'
 import axios from 'axios'
+import {LinearGradient} from 'expo-linear-gradient'
 
 //custom components
-import { colors } from '../components/colors'
+import { gradients , positions} from '../components/colors'
 import { Container, FlexContainer } from '../components/shared'
 import ComposeButton from '../components/Buttons/ComposeButton'
 import SideTabButton from '../components/Buttons/SideTabButton'
@@ -22,8 +23,18 @@ import {data} from '../components/3DCanvas/nodedata'
 
 //Assets
 
+const Gradient = styled(LinearGradient).attrs({
+    colors: gradients.background,
+    start:  positions.twothirds,
+    end: positions.bottom
+})`
+    width: 100%
+    height: 100%
+
+`
+
 const HomeContainer = styled(FlexContainer)`
-    background-color: ${colors.offwhite}
+    
     width: 100%
     height:100%
     flex: 1
@@ -46,7 +57,7 @@ const ButtonsContainer = styled(FlexContainer)`
     width: 100%
     flex-direction: row-reverse
     z-index: 1
-    padding-top: 20px
+    padding-top: 30%
     flex: 0
     
 `
@@ -97,7 +108,8 @@ const Home: FunctionComponent = () => {
     <>
 
         <HomeContainer>
-            <StatusBar style='dark'/>
+            <Gradient>
+            <StatusBar style='light'/>
             <ModalsContainer>
                 <SlideOutModal
                     isVisible={isFilterModalVisible}
@@ -106,6 +118,7 @@ const Home: FunctionComponent = () => {
                     swipeDirection={'right'}
                     swipeThreshold={100}
                     onSwipeComplete={()=> {setFilterModalVisible(false)}}
+                    closeHandler={(e) => {setFilterModalVisible(false)}}
                     hasBackdrop={true}
                     tab='filter'
                     />
@@ -132,6 +145,7 @@ const Home: FunctionComponent = () => {
             <FooterContainer>
                 <ComposeButton onPress={composerToggle}/>
             </FooterContainer>
+            </Gradient>
         </HomeContainer> 
     </>
     
