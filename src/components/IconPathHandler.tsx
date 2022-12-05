@@ -12,13 +12,18 @@ const IconPathHandler : FunctionComponent<pathProps> = (props) => {
 
     switch (props.icon) {
      case 'addsquare': 
-         return <Path 
-            d="M13.3333 20H26.6667M20 26.6667V13.3334M15 36.6667H25C33.3333 36.6667 36.6667 33.3334 36.6667 25V15C36.6667 6.66671 33.3333 3.33337 25 3.33337H15C6.66668 3.33337 3.33334 6.66671 3.33334 15V25C3.33334 33.3334 6.66668 36.6667 15 36.6667Z" 
-            stroke={"black" } 
-            stroke-opacity="0.5" 
-            stroke-width="1.5" 
-            stroke-linecap="round" 
-            stroke-linejoin="round"/>
+         return (
+            <Svg width="100%" height="100%" viewBox={props.viewBox} fill="none">
+                <Path 
+                d="M13.3333 20H26.6667M20 26.6667V13.3334M15 36.6667H25C33.3333 36.6667 36.6667 33.3334 36.6667 25V15C36.6667 6.66671 33.3333 3.33337 25 3.33337H15C6.66668 3.33337 3.33334 6.66671 3.33334 15V25C3.33334 33.3334 6.66668 36.6667 15 36.6667Z" 
+                stroke="white" 
+                stroke-opacity="0.5" 
+                stroke-width="1.5" 
+                stroke-linecap="round" 
+                stroke-linejoin="round"/>
+            </Svg> 
+         )
+         
      case 'filter':
         return (
             <Svg width="100%" height="100%" viewBox={props.viewBox} fill="none">

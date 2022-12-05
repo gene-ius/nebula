@@ -1,12 +1,21 @@
 import React , { FunctionComponent } from 'react'
 import { GestureResponderEvent, StyleProp, ViewStyle } from 'react-native'
-import Svg , { Path } from 'react-native-svg'
+import { LinearGradient } from 'expo-linear-gradient'
 import styled from 'styled-components/native'
 
 
-import { colors } from '../colors'
+import { colors, gradients, positions } from '../colors'
+import IconPathHandler from '../IconPathHandler'
 
-
+const Gradient = styled(LinearGradient).attrs({
+    colors: gradients.navbar,
+    start:  positions.top,
+    end: positions.bottom
+})`
+    width: 100%
+    height: 100%
+    borderRadius: 35,
+`
 
 const ButtonView = styled.TouchableOpacity`
     width: 60px
@@ -19,7 +28,7 @@ const ButtonView = styled.TouchableOpacity`
 const IconContainer = styled.View`
     height: 100%
     width: 100%
-    padding: 15px 15px 15px 15px
+    padding: 13px 13px 13px 13px
     justify-content: center
     align-items: center
 `
@@ -35,17 +44,11 @@ interface ButtonProps {
 const ComposeButton: FunctionComponent<ButtonProps> = (props) => {
   return (
     <ButtonView onPress={props.onPress} style={props.btnStyles}>
-        <IconContainer>
-            <Svg width="100%" height="100%" viewBox="0 0 40 40" fill='none'>
-                <Path 
-                    d="M13.3333 20H26.6667M20 26.6667V13.3334M15 36.6667H25C33.3333 36.6667 36.6667 33.3334 36.6667 25V15C36.6667 6.66671 33.3333 3.33337 25 3.33337H15C6.66668 3.33337 3.33334 6.66671 3.33334 15V25C3.33334 33.3334 6.66668 36.6667 15 36.6667Z" 
-                    stroke="black" 
-                    stroke-opacity="0.5" 
-                    stroke-width="1.5" 
-                    stroke-linecap="round" 
-                    stroke-linejoin="round"/>
-            </Svg>
-        </IconContainer>
+        <Gradient>
+            <IconContainer>
+                <IconPathHandler icon="addsquare" viewBox='0 0 40 40'/>
+            </IconContainer>
+        </Gradient>
     </ButtonView>
   )
 }
