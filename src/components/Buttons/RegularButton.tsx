@@ -29,7 +29,7 @@ interface ButtonProps {
 const RegularButton: FunctionComponent<ButtonProps> =  (props) => {
     const gradientstyle : StyleProp<ViewStyle> = {
         width: "100%",
-        borderRadius: props.btnStyles['borderRadius'],
+        borderRadius: props.btnStyles['borderRadius'] - 1,
         alignItems: "center",
         justifyContent: "center",
         flex: 1

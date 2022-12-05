@@ -9,7 +9,7 @@ export const colors = {
     gray: '#636363',
     graylight: '#D1D1D1',
     graydark: '#4C4C4C',
-    accent: '',
+    accent: 'rgba(0, 0, 0, 0.5)',
     shadow: 'rgba(0, 0, 0, 0.25)',
     transparent: 'rgba(0, 0, 0, 0)',
     backdark: "#0F1013"
@@ -22,9 +22,10 @@ export const gradients = {
     headerbutton: ['#3A2687','#0F1013'],
     primaryactionbutton: ['#3A2687', '#DE3BF9'],
     navbar: ['#3A2687', '#9C2CD0'],
-    modal: ['#9C2CD0', '#9C2CD0'],
+    modal: ['#8425B0', '#3A2687'],
     slidingmodal: ['#0F1013', '#3A2687'],
-    footerbutton: ['#DE3BF9', '#3A2687']
+    footerbutton: ['#DE3BF9', '#3A2687'],
+    togglebutton: ['#9C2CD0','#3A2687']
 }
 
 export const positions = {

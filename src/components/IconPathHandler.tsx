@@ -66,13 +66,13 @@ const IconPathHandler : FunctionComponent<pathProps> = (props) => {
             <Svg  width="100%" height="100%" viewBox={props.viewBox} fill='none'>
                 <Path 
                     d="M12 15.5V9.5M12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22Z" 
-                    stroke="black" 
+                    stroke="white" 
                     stroke-width="1.5" 
                     stroke-linecap="round" 
                     stroke-linejoin="round"/>
                 <Path 
                     d="M9 11.5L12 8.5L15 11.5" 
-                    stroke="black" 
+                    stroke="white" 
                     stroke-width="1.5" 
                     stroke-linecap="round" 
                     stroke-linejoin="round"/>

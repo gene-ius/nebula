@@ -1,15 +1,24 @@
 import React, {FunctionComponent,  useState } from 'react'
 import styled from 'styled-components/native'
-import { GestureResponderEvent, ImageSourcePropType, StyleProp, ViewStyle } from 'react-native'
-import Svg , { Path } from 'react-native-svg'
-import { colors } from '../colors'
+import { GestureResponderEvent, StyleProp, ViewStyle } from 'react-native'
+import { colors, gradients, positions } from '../colors'
+import { LinearGradient } from 'expo-linear-gradient'
 import IconPathHandler from '../IconPathHandler'
+
+const Gradient = styled(LinearGradient).attrs({
+    colors: gradients.togglebutton,
+    start:  positions.top,
+    end: positions.bottom
+})`
+    width: 100%
+    height: 100%
+    borderRadius: 17,
+`
 
 const ButtonView = styled.TouchableOpacity`
     width: 54px
     height: 54px
-    background-color: ${colors.white};
-    border-radius: 27px;'
+    border-radius: 17px;'
     boxShadow: 0px 2px 1px ${colors.shadow}
 `
 
@@ -31,9 +40,11 @@ interface ButtonProps {
 const ToggleIconButton: FunctionComponent<ButtonProps> =  (props) => {
     return (
         <ButtonView onPress={props.onPress} style={props.btnStyles}>
-            <IconContainer>
-                <IconPathHandler icon={props.icon} viewBox={"0 0 24 24"}/>
-            </IconContainer>
+            <Gradient>
+                <IconContainer>
+                    <IconPathHandler icon={props.icon} viewBox={"0 0 24 24"}/>
+                </IconContainer>
+            </Gradient>
         </ButtonView>
     )
 }

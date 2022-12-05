@@ -6,7 +6,7 @@ import QuillEditor from 'react-native-cn-quill';
 import RegularButton from '../Buttons/RegularButton';
 import RegularText from '../Text/RegularText';
 import { colors, gradients } from '../colors';
-import { GestureResponderEvent, StyleProp, TextInput, TextStyle } from 'react-native';
+import { GestureResponderEvent, StyleProp, TextInput, TextStyle, ViewStyle } from 'react-native';
 import ToggleIconButton from '../Buttons/ToggleIconButton';
 import { processFontFamily } from 'expo-font';
 
@@ -23,7 +23,8 @@ const InputView = styled.View`
     marginTop: 2%
     border-radius: 30px
     align-self: center
-    background-color: ${colors.offwhite}
+    background-color: ${colors.backdark}
+    innerShadow: 0px 4px 4px ${colors.shadow}
 `
 
 const ButtonView = styled.View`
@@ -38,6 +39,7 @@ const HeaderInput = styled.TextInput`
     margin-left: 5%
     marginRight: 5%
     margin-top: 8%
+    paddingBottom: 2%
     borderBottomColor: ${colors.graylight}
     borderBottomWidth: 1px
 
@@ -51,12 +53,40 @@ const BodyInput = styled.TextInput`
     textAlign: justify
 `
 
-const logBtnStyleProps : StyleProp<TextStyle> = {
-    width: "50%",
+const modalTitleTextProps : StyleProp<TextStyle> ={
+    fontSize: 24, 
+    color:colors.white, 
+    paddingBottom: 5, 
+    marginLeft: '5%',
+    borderBottomColor: colors.white,
+    borderBottomWidth: 3
+}
+
+const logBtnStyleProps : StyleProp<ViewStyle> = {
+    width: "40%",
     borderRadius: 17,
     borderColor: colors.white,
-    borderWidth: 1
+    borderWidth: 1,
  }
+
+ const toggleBtnStyleProps : StyleProp<ViewStyle> = {
+    borderRadius: 18,
+ }
+
+const headerInputTextStyleProps : StyleProp<TextStyle> = {
+    color: colors.white,
+    fontSize: 18,
+    fontFamily: "ChakraPetch-Regular"
+
+}
+
+const bodyInputTextStyleProps : StyleProp<TextStyle> = {
+    color: colors.white,
+    fontSize: 15,
+    fontFamily: "ChakraPetch-Regular"
+    
+
+}
 
 
 interface ComposerProps {
@@ -74,13 +104,13 @@ const ComposerView: FunctionComponent<ComposerProps> = (props) => {
     const [idea, setIdea] = useState('')
   return (
     <EditorView>
-        <RegularText textStyles={{fontSize: 24, color:colors.graydark, paddingBottom: 5, marginLeft: '5%'}}>Draft Your Idea ...</RegularText>
+        <RegularText textStyles={modalTitleTextProps}>Draft Your Idea ...</RegularText>
         <InputView>
-            <HeaderInput placeholder='Title Your Thought...'/>
-            <BodyInput multiline placeholder='What are you thinking?' onChange={() => setIdea}></BodyInput>
+            <HeaderInput placeholder='Title Your Thought...' placeholderTextColor={colors.graylight} style={headerInputTextStyleProps}/>
+            <BodyInput multiline placeholder='What are you thinking?' placeholderTextColor={colors.graylight}  style={bodyInputTextStyleProps} onChange={() => setIdea}></BodyInput>
         </InputView>
         <ButtonView>
-            <ToggleIconButton onPress={()=> {}} icon={'camera'} />
+            <ToggleIconButton onPress={()=> {}} icon={'image'} btnStyles={toggleBtnStyleProps} />
             <ToggleIconButton onPress={()=> {}} icon={'upload'} />
             <RegularButton gradient={gradients.landingsecondary} onPress={() => props.submitHandler(idea)} btnStyles={logBtnStyleProps} textStyles={{fontFamily:"ChakraPetch-Light", fontSize:20}}>LOG IDEA</RegularButton>
         </ButtonView>

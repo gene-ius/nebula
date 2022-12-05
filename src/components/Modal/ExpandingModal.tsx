@@ -1,8 +1,20 @@
 import React , { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 import Modal , { Direction , OnSwipeCompleteParams}  from 'react-native-modal'
-import { colors } from '../colors'
+import { colors, gradients, positions } from '../colors'
 import { GestureResponderEvent, PanResponderGestureState, Text } from 'react-native'
+import { LinearGradient } from 'expo-linear-gradient'
+
+const Gradient = styled(LinearGradient).attrs({
+  colors: gradients.modal,
+  start:  positions.top,
+  end: positions.twothirds
+})`
+  width: 100%
+  height: 100%
+  borderRadius: 36
+
+`
 
 const ModalView = styled.View`
     width: 95%
@@ -47,7 +59,9 @@ const ExpandingModal : FunctionComponent<ExpandingModalProps> = (props) => {
         >
         <ModalView>
             <ComposerCard>
+              <Gradient>
                 {props.children}
+              </Gradient>
             </ComposerCard>
         </ModalView>
     </Modal>
