@@ -16,5 +16,3 @@ export const FlexContainer = styled.KeyboardAvoidingView`
     flex: 1;
 `
 
-
-

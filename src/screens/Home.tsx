@@ -20,7 +20,9 @@ import NewsBanner from '../components/Footer/NewsBanner'
 import TestBox from '../components/3DCanvas/TestBox'
 import Nebula from '../components/3DCanvas/TestNeb'
 
+//types
 import {data} from '../components/3DCanvas/nodedata'
+import {Idea} from '../components/types'
 
 //Assets
 
@@ -75,29 +77,20 @@ const FooterContainer = styled(Container)`
     zIndex: 1
 `
 
-//types
-
-interface Idea {
-    header: string
-    body: string
-    mood: string
-    image?: undefined
-}
 
 const Home: FunctionComponent = () => {
 
     const [isFilterModalVisible, setFilterModalVisible] = useState(false)
     const [isComposerModalVisible, setComposerModalVisible] = useState(false)
-    const [ideas, setIdeas] = useState([])
+    const [ideas, setIdeas] = useState<Idea[]>([])
 
     const toggleFilterModal = () => {
         setFilterModalVisible(!isFilterModalVisible)
     }
 
-    const updateIdeas = async (idea : string) => {
-        if (idea == '') return
+    const updateIdeas = (idea : Idea) => {
+        setIdeas((oldlist) => [idea, ...oldlist])
         composerToggle()
-        setIdeas([idea, ...ideas])
         
     }
 

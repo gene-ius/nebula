@@ -11,6 +11,11 @@ import ToggleIconButton from '../Buttons/ToggleIconButton';
 import { processFontFamily } from 'expo-font';
 
 
+
+//types import 
+import { Idea } from '../types';
+
+
 const EditorView = styled.View`
     width: 100% 
     flex: 2
@@ -90,7 +95,7 @@ const bodyInputTextStyleProps : StyleProp<TextStyle> = {
 
 
 interface ComposerProps {
-    submitHandler: ((idea: string) => void)
+    submitHandler: ((idea: Idea) => void)
 }
 
 
@@ -100,19 +105,27 @@ interface ComposerProps {
 //construct editor view for pop up modal with heading input , notes input , and submit button 
 //connect to state.
 const ComposerView: FunctionComponent<ComposerProps> = (props) => {
-    // const editor = useRef()
-    const [idea, setIdea] = useState('')
+    const [header, setHeader] = useState('') 
+    const [body, setBody] = useState('')
+    const [mood, setMood] = useState('')
+
+
   return (
     <EditorView>
         <RegularText textStyles={modalTitleTextProps}>Draft Your Idea ...</RegularText>
         <InputView>
-            <HeaderInput placeholder='Title Your Thought...' placeholderTextColor={colors.graylight} style={headerInputTextStyleProps}/>
-            <BodyInput multiline placeholder='What are you thinking?' placeholderTextColor={colors.graylight}  style={bodyInputTextStyleProps} onChange={() => setIdea}></BodyInput>
+            <HeaderInput onChangeText={(text) => setHeader(text)} placeholder='Title Your Thought...' placeholderTextColor={colors.graylight} style={headerInputTextStyleProps}/>
+            <BodyInput onChangeText={(text) => setBody(text)}multiline placeholder='What are you thinking?' placeholderTextColor={colors.graylight}  style={bodyInputTextStyleProps}></BodyInput>
         </InputView>
         <ButtonView>
             <ToggleIconButton onPress={()=> {}} icon={'image'} btnStyles={toggleBtnStyleProps} />
             <ToggleIconButton onPress={()=> {}} icon={'upload'} />
-            <RegularButton gradient={gradients.landingsecondary} onPress={() => props.submitHandler(idea)} btnStyles={logBtnStyleProps} textStyles={{fontFamily:"ChakraPetch-Light", fontSize:20}}>LOG IDEA</RegularButton>
+            <RegularButton gradient={gradients.landingsecondary} onPress={() => {
+                if (header == '' || body == '') return
+                // setMood(props.mood)
+                const newIdea : Idea = {title: header, body: body}
+                props.submitHandler(newIdea)
+                }} btnStyles={logBtnStyleProps} textStyles={{fontFamily:"ChakraPetch-Light", fontSize:20}}>LOG IDEA</RegularButton>
         </ButtonView>
     </EditorView>
   )
