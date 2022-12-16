@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import { useRef, useState } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber/native'
+import { useFrame } from '@react-three/fiber/native'
 import { Instances, Instance, OrbitControls, Environment, useGLTF } from '@react-three/drei/native'
 
 

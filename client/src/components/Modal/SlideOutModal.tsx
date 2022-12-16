@@ -18,8 +18,8 @@ const Gradient = styled(LinearGradient).attrs({
 `
 
 const CardContainer = styled.View`
-  width: 90%
-  height: 25%
+  width: 50%
+  height: 65%
   background-color: ${colors.white}
   border-bottom-left-radius: 20px
   box-shadow: 0px 3px 1px ${colors.shadow}
@@ -29,8 +29,8 @@ const ModalView = styled.View`
   flex-direction: row
   width: 100%
   height: 85%%
-  margin-left: 10%
   margin-top: 20%
+  margin-left: 40%
 
 
 `

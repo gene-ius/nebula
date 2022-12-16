@@ -1,7 +1,7 @@
 import React , { FunctionComponent } from 'react'
 
 //React Navigation Libraries
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 //Custom Components
 import Welcome from '../screens/Welcome';
@@ -19,8 +19,10 @@ type RootStackParamList = {
 const Stack = createStackNavigator<RootStackParamList>()
 
 const RootStack: FunctionComponent = () => {
+    const navigationRef = useNavigationContainerRef();
+
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
         <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{

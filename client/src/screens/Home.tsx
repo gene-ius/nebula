@@ -13,7 +13,7 @@ import FooterButton from '../components/Buttons/FooterButton'
 import SideTabButton from '../components/Buttons/SideTabButton'
 import SlideOutModal from '../components/Modal/SlideOutModal'
 import ExpandingModal from '../components/Modal/ExpandingModal'
-import ComposerView from '../components/InputView/ComposerView'
+import ComposerView from '../components/ModalView/ComposerView'
 import NewsBanner from '../components/Footer/NewsBanner'
 
 //Test Canvas Components
@@ -23,6 +23,7 @@ import Nebula from '../components/3DCanvas/TestNeb'
 //types
 import {data} from '../components/3DCanvas/nodedata'
 import {Idea} from '../components/types'
+import FilterView from '../components/ModalView/FilterView'
 
 //Assets
 
@@ -116,7 +117,9 @@ const Home: FunctionComponent = () => {
                     closeHandler={(e) => {setFilterModalVisible(false)}}
                     hasBackdrop={true}
                     tab='filter'
-                    />
+                    >
+                        <FilterView/>
+                </SlideOutModal>
                 <ExpandingModal
                     isVisible={isComposerModalVisible}
                     animationIn={'zoomIn'}

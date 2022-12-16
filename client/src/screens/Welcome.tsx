@@ -9,6 +9,7 @@ import { Container } from '../components/shared'
 import BigText from '../components/Text/BigText'
 import RegularText from '../components/Text/RegularText'
 import RegularButton from '../components/Buttons/RegularButton'
+import { useNavigationContainerRef } from '@react-navigation/native'
 
 const Gradient = styled(LinearGradient).attrs({
     colors: gradients.background,
