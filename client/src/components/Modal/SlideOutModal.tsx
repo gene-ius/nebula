@@ -30,7 +30,7 @@ const ModalView = styled.View`
   width: 100%
   height: 85%%
   margin-top: 20%
-  margin-left: 40%
+  margin-left: 45%
 
 
 `

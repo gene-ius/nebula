@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components/native";
 import { GestureResponderEvent, StyleProp, TextStyle, ViewStyle } from "react-native";
-import  { LinearGradient } from "expo-linear-gradient";
+import  { LinearGradient, LinearGradientPoint } from "expo-linear-gradient";
 
 
 //components
@@ -24,6 +24,8 @@ interface ButtonProps {
     textStyles?: StyleProp<TextStyle>
     children: React.ReactNode
     gradient: any[]
+    gradStart: LinearGradientPoint
+    gradEnd : LinearGradientPoint
 }
 
 const RegularButton: FunctionComponent<ButtonProps> =  (props) => {
@@ -42,6 +44,8 @@ const RegularButton: FunctionComponent<ButtonProps> =  (props) => {
              <LinearGradient
                 colors={props.gradient}
                 style={gradientstyle}
+                start={props.gradStart}
+                end={props.gradEnd}
             >
                     <RegularText textStyles={props.textStyles}>{props.children}</RegularText> 
             </LinearGradient>             

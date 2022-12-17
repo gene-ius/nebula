@@ -28,9 +28,28 @@ export const gradients = {
     togglebutton: ['#9C2CD0','#3A2687']
 }
 
+export const moods = {
+    joy: ['#FFCE50', '#FF8F50'],
+    pensi: ['#FF6E40', '#FF932F'],
+    sad: ['#AEAEAE', '#6C6C6C'],
+    curi: ['#DE3BF9', '#B52ECB'],
+    frust: ['#F14141', '#C73232'],
+    faith: ['#B839F3','#9932C9'],
+    innov: ['#3CEC8D','#3CD065'],
+    creat: ['#3CE1EC','#2FBCC5'],
+    love: ['#FF4FB8','#C83A8F'],
+    plan: ['#4E4AFF','#4A47DD'],
+    great: ['#91FF4E','#56EC49'],
+    disabled: []
+    
+
+}
+
 export const positions = {
     top: {x: 0.5, y: 0},
     half: {x: 0.5, y: 0.55},
     twothirds: {x: 0.5, y: 0.33},
-    bottom: {x:0.5, y:1}
+    bottom: {x:0.5, y:1},
+    left: {x: 0, y: 0.5},
+    right: {x: 1, y: 0.5}
 }
