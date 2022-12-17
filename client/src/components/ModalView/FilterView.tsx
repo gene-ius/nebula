@@ -116,7 +116,7 @@ const FilterView = () => {
            <Picker.Item label='This Year' value={'year'}/>
            <Picker.Item label='All Time' value={'all'}/>
         </Picker>
-        <SmallText textStyles={{textAlign: 'center',fontSize: 18 , zIndex: 1, paddingTop: '38%'}}>
+        <SmallText textStyles={{textAlign: 'center',fontSize: 18 , zIndex: 1, paddingTop: '40%'}}>
           Mood Filter
         </SmallText>
         <ButtonView>
