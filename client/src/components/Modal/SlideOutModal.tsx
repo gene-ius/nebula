@@ -29,7 +29,7 @@ const ModalView = styled.View`
   flex-direction: row
   width: 100%
   height: 85%%
-  margin-top: 20%
+  margin-top: 21%
   margin-left: 45%
 
 

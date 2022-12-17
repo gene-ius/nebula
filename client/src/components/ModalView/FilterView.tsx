@@ -103,7 +103,7 @@ const FilterView = () => {
         Your Mind...
       </RegularText>
       <Picker
-        itemStyle={{color: 'white', fontSize: 15, fontFamily: 'ChakraPetch-Light'}}
+        itemStyle={{color: 'white', fontSize: 15, fontFamily: 'ChakraPetch-Bold'}}
         style={{alignSelf: 'center',width: '90%', height: '10%', position: 'relative', top: '-15%'}}
         mode='dropdown'
         selectedValue={selectedInterval}
@@ -126,8 +126,8 @@ const FilterView = () => {
                         gradient={moodTags.has(v.tag) ? v.mood : moods.disabled} 
                         gradStart={positions.twothirds}
                         gradEnd={positions.bottom}
-                        btnStyles={{borderRadius: 30}}
-                        textStyles={{fontFamily:'ChakraPetch-Regular', fontSize: 15}}
+                        btnStyles={{borderRadius: 10}}
+                        textStyles={{fontFamily: moodTags.has(v.tag) ? 'ChakraPetch-SemiBold' : 'ChakraPetch-Regular' , fontSize: 15}}
                         >
                           {v.text}
                         </MoodButton>
