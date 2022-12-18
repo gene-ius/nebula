@@ -24,6 +24,7 @@ import Nebula from '../components/3DCanvas/TestNeb'
 import {data} from '../components/3DCanvas/nodedata'
 import {Idea} from '../components/types'
 import FilterView from '../components/ModalView/FilterView'
+import MoodSelectorView from '../components/ModalView/MoodSelectorView'
 
 //Assets
 
@@ -83,21 +84,33 @@ const Home: FunctionComponent = () => {
 
     const [isFilterModalVisible, setFilterModalVisible] = useState(false)
     const [isComposerModalVisible, setComposerModalVisible] = useState(false)
+    const [composerModalStep, setComposerModalStep] = useState(0)
+    const [moodData, setMoodData] = useState<string[]>([])
     const [ideas, setIdeas] = useState<Idea[]>([])
 
     const toggleFilterModal = () => {
         setFilterModalVisible(!isFilterModalVisible)
     }
 
+    const updateMoods = (moods: string[], seq: number) => {
+        setMoodData(moods)
+        setComposerModalStep(2)
+    }
+
     const updateIdeas = (idea : Idea) => {
         setIdeas((oldlist) => [idea, ...oldlist])
-        composerToggle()
+        composerExit()
         
     }
 
 
-    const composerToggle = () => {
-        setComposerModalVisible(!isComposerModalVisible)
+    const composerOpen = () => {
+        setComposerModalStep(1)
+    }
+
+    const composerExit = () => {
+        setComposerModalStep(0)
+        setMoodData([])
     }
 
   return (
@@ -121,13 +134,21 @@ const Home: FunctionComponent = () => {
                         <FilterView/>
                 </SlideOutModal>
                 <ExpandingModal
-                    isVisible={isComposerModalVisible}
+                    isVisible={composerModalStep == 1}
                     animationIn={'zoomIn'}
                     animationOut={'zoomOut'}
-                    dismissAction={composerToggle}
+                    hasBackdrop={true}
+                >
+                    <MoodSelectorView submitHandler={updateMoods} seq={1}/>
+                </ExpandingModal>
+                <ExpandingModal
+                    isVisible={composerModalStep == 2}
+                    animationIn={'zoomIn'}
+                    animationOut={'zoomOut'}
+                    dismissAction={composerExit}
                     hasBackdrop={true}
                     >
-                        <ComposerView submitHandler={updateIdeas}/>
+                        <ComposerView submitHandler={updateIdeas} moodData={moodData}/>
                 </ExpandingModal>
             </ModalsContainer>
             <ButtonsContainer>
@@ -142,7 +163,7 @@ const Home: FunctionComponent = () => {
             </CanvasContainer>
             <FooterContainer>
                 <FooterButton icon={'shuffle'} viewBox={'0 0 24 24'}onPress={() => {}}/>
-                <FooterButton icon={'addsquare'} viewBox={'0 0 24 24'} onPress={composerToggle}/>
+                <FooterButton icon={'addsquare'} viewBox={'0 0 24 24'} onPress={composerOpen}/>
             </FooterContainer>
             <NewsBanner/>
             </Gradient>

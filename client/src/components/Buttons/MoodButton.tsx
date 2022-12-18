@@ -12,7 +12,7 @@ const ButtonView = styled.TouchableOpacity`
     flex: 1 
     align-items: center
     justify-content: center
-    maxWidth: 72px
+    maxWidth: 100%
     minWidth: 70px
     height: 28px
 

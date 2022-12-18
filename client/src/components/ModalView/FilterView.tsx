@@ -92,7 +92,6 @@ const FilterView = () => {
       text: "INNOV8",
       mood: moods.innov
     }
-
   ]
 
   

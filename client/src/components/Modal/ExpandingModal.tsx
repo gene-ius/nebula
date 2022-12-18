@@ -16,13 +16,13 @@ const Gradient = styled(LinearGradient).attrs({
 
 `
 
-const ModalView = styled.View`
+const ModalView = styled.KeyboardAvoidingView`
     width: 95%
     height: 60%
     align-self: center
 `
 
-const ComposerCard = styled.View`
+const ComposerCard = styled.KeyboardAvoidingView`
     width: 100%
     height: 100%
     border-radius: 45px
@@ -38,7 +38,7 @@ interface ExpandingModalProps {
   animationIn: any
   animationOut: any
 //   onSwipeComplete: ((params: OnSwipeCompleteParams, gestureState: PanResponderGestureState) => void) | undefined
-  dismissAction: (() => void)
+  dismissAction?: (() => void)
   hasBackdrop: boolean
   tab?: string | null
   children?: React.ReactNode

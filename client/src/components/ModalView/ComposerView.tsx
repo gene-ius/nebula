@@ -5,8 +5,8 @@ import QuillEditor from 'react-native-cn-quill';
 //components
 import RegularButton from '../Buttons/RegularButton';
 import RegularText from '../Text/RegularText';
-import { colors, gradients } from '../colors';
-import { GestureResponderEvent, StyleProp, TextInput, TextStyle, ViewStyle } from 'react-native';
+import { colors, gradients, positions } from '../colors';
+import { GestureResponderEvent, Keyboard, StyleProp, TextInput, TextStyle, ViewStyle } from 'react-native';
 import ToggleIconButton from '../Buttons/ToggleIconButton';
 import { processFontFamily } from 'expo-font';
 
@@ -14,12 +14,22 @@ import { processFontFamily } from 'expo-font';
 
 //types import 
 import { Idea } from '../types';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import TransparentIconButton from '../Buttons/TransparentIconButton';
 
 
 const EditorView = styled.View`
+    flex-direction: column
     width: 100% 
     flex: 2
     padding: 5% 5% 5% 5%
+`
+const HeaderView = styled.View`
+    flexDirection: row
+    justify-content: space-between
+    marginLeft: 5%
+    marginRight: 5%
+
 `
 
 const InputView = styled.View`
@@ -62,7 +72,6 @@ const modalTitleTextProps : StyleProp<TextStyle> ={
     fontSize: 24, 
     color:colors.white, 
     paddingBottom: 5, 
-    marginLeft: '5%',
     borderBottomColor: colors.white,
     borderBottomWidth: 3
 }
@@ -89,16 +98,19 @@ const bodyInputTextStyleProps : StyleProp<TextStyle> = {
     color: colors.white,
     fontSize: 15,
     fontFamily: "ChakraPetch-Regular"
-    
-
 }
 
 
 interface ComposerProps {
     submitHandler: ((idea: Idea) => void)
+    moodData: string[]
 }
 
-
+const HideKeyboard = ({children}) => (
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+            {children}
+    </TouchableWithoutFeedback>
+)
 
 
 
@@ -112,19 +124,28 @@ const ComposerView: FunctionComponent<ComposerProps> = (props) => {
 
   return (
     <EditorView>
-        <RegularText textStyles={modalTitleTextProps}>Draft Your Idea ...</RegularText>
+        <HeaderView>
+            <RegularText textStyles={modalTitleTextProps}>Draft Your Idea ...</RegularText>
+            <TransparentIconButton icon='back' onPress={() => {}} viewBox={'0 0 24 24'} btnStyles={{}}/>
+        </HeaderView>
         <InputView>
-            <HeaderInput onChangeText={(text) => setHeader(text)} placeholder='Title Your Thought...' placeholderTextColor={colors.graylight} style={headerInputTextStyleProps}/>
-            <BodyInput onChangeText={(text) => setBody(text)}multiline placeholder='What are you thinking?' placeholderTextColor={colors.graylight}  style={bodyInputTextStyleProps}></BodyInput>
+            <HideKeyboard>
+                <HeaderInput onChangeText={(text) => setHeader(text)} placeholder='Title Your Thought...' placeholderTextColor={colors.graylight} style={headerInputTextStyleProps}/>
+                <BodyInput onChangeText={(text) => setBody(text)}multiline placeholder='What are you thinking?' placeholderTextColor={colors.graylight}  style={bodyInputTextStyleProps}></BodyInput>
+            </HideKeyboard>
         </InputView>
         <ButtonView>
             <ToggleIconButton onPress={()=> {}} icon={'image'} btnStyles={toggleBtnStyleProps} />
             <ToggleIconButton onPress={()=> {}} icon={'upload'} />
-            <RegularButton gradient={gradients.landingsecondary} onPress={() => {
-                if (header == '' || body == '') return
-                // setMood(props.mood)
-                const newIdea : Idea = {title: header, body: body}
-                props.submitHandler(newIdea)
+            <RegularButton 
+                gradient={gradients.landingsecondary} 
+                gradStart={positions.left}
+                gradEnd={positions.right}
+                onPress={() => {
+                    if (header == '' || body == '') return
+                    // setMood(props.mood)
+                    const newIdea : Idea = {title: header, body: body, mood: props.moodData}
+                    props.submitHandler(newIdea)
                 }} btnStyles={logBtnStyleProps} textStyles={{fontFamily:"ChakraPetch-Light", fontSize:20}}>LOG IDEA</RegularButton>
         </ButtonView>
     </EditorView>

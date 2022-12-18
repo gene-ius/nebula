@@ -89,6 +89,35 @@ const IconPathHandler : FunctionComponent<pathProps> = (props) => {
                     stroke-linejoin="round"/>
             </Svg>
         ) 
+     case 'close':
+        return (
+            <Svg width="100%" height="100%" viewBox={props.viewBox} fill="none">
+                <Path 
+                    d="M9.17 14.83L14.83 9.17M14.83 14.83L9.17 9.17M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" 
+                    stroke="white" 
+                    stroke-width="1.5" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round"/>
+            </Svg>
+        )
+     case 'back':
+        return (
+            <Svg width="100%" height="100%" viewBox={props.viewBox} fill="none">
+                <Path 
+                    d="M7.12988 18.31H15.1299C17.8899 18.31 20.1299 16.07 20.1299 13.31C20.1299 10.55 17.8899 8.31 15.1299 8.31H4.12988" 
+                    stroke="white" 
+                    stroke-width="1.5" 
+                    stroke-miterlimit="10" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round"/>
+                <Path 
+                    d="M6.43012 10.81L3.87012 8.25L6.43012 5.69" 
+                    stroke="white" 
+                    stroke-width="1.5"
+                    stroke-linecap="round" 
+                    stroke-linejoin="round"/>
+            </Svg>
+        )   
         
 
     } 

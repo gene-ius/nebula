@@ -1,6 +1,7 @@
 export interface Idea {
     title: any
     body: any
+    mood: string[]
 }
 
 // import { ImageSourcePropType } from "react-native"

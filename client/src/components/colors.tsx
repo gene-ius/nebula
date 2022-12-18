@@ -25,7 +25,8 @@ export const gradients = {
     modal: ['#8425B0', '#3A2687'],
     slidingmodal: ['#0F1013', '#3A2687'],
     footerbutton: ['#DE3BF9', '#3A2687'],
-    togglebutton: ['#9C2CD0','#3A2687']
+    togglebutton: ['#9C2CD0','#3A2687'],
+    disabled: []
 }
 
 export const moods = {
