@@ -115,8 +115,8 @@ const Home: FunctionComponent = () => {
     }
 
     const composerExit = () => {
-        setMoodData([])
         setComposerModalVisible(false)
+        setMoodData([])
     }
 
   return (
@@ -144,8 +144,9 @@ const Home: FunctionComponent = () => {
                     animationIn={'zoomIn'}
                     animationOut={'zoomOut'}
                     hasBackdrop={true}
+                    dismissAction={composerExit}
                     >
-                       { composerModalStep == 1 ? <MoodSelectorView backhandler={composerExit} submitHandler={updateMoods} seq={1}/> : <ComposerView backHandler={composerExit} submitHandler={updateIdeas} moodData={moodData}/> }
+                       { composerModalStep == 1 && isComposerModalVisible ? <MoodSelectorView backHandler={composerExit} submitHandler={updateMoods} seq={1}/> : <ComposerView backHandler={composerExit} submitHandler={updateIdeas} moodData={moodData}/> }
                 </ExpandingModal>
             </ModalsContainer>
             <ButtonsContainer>

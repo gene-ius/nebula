@@ -131,7 +131,7 @@ const ComposerView: FunctionComponent<ComposerProps> = (props) => {
     <EditorView>
         <HeaderView>
             <RegularText textStyles={modalTitleTextProps}>Draft Your Idea ...</RegularText>
-            <TransparentIconButton icon='back' onPress={() => {clearIdea; props.backHandler}} viewBox={'0 0 24 24'} btnStyles={{}}/>
+            <TransparentIconButton icon='back' onPress={() => {clearIdea; console.log('idea cleared'); props.backHandler}} viewBox={'0 0 24 24'} btnStyles={{}}/>
         </HeaderView>
         <InputView>
             <HideKeyboard>

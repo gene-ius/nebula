@@ -1,17 +1,19 @@
-import React , { FunctionComponent } from 'react'
+import React , { FunctionComponent, useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import styled from 'styled-components/native'
 import {LinearGradient} from 'expo-linear-gradient'
 
 //custom components 
-import { gradients , positions} from '../components/colors'
+import { colors ,gradients , positions} from '../components/colors'
 import { Container } from '../components/shared'
 import BigText from '../components/Text/BigText'
 import RegularText from '../components/Text/RegularText'
-import RegularButton from '../components/Buttons/RegularButton'
+import LoginForm from '../components/Forms/LoginForm'
 
 import { RootStackParamList } from '../navigators/RootStack'
 import { StackScreenProps } from '@react-navigation/stack'
+import RegisterForm from '../components/Forms/RegisterForm'
+
 
 type Props = StackScreenProps<RootStackParamList, 'Welcome'>
 
@@ -35,17 +37,27 @@ const TopSection = styled.View`
     flex: 1;
     max-height: 60%;
     align-items: center;
-    margin-top: 75%
+    margin-top: 60%
 `
 
-const BottomSection = styled.View`
+const FormSection = styled.View`
     width: 100%;
     flex: 1; 
     padding: 50px;
-`   
+`  
+
+const Input = styled.TextInput`
+    color: ${colors.white}
+`
+
+
+
+
 
 // TODO : Add 3D Visual Animation Canvas onto Welcome Screen
-const Welcome: FunctionComponent<Props> = ({ navigation }) => {
+const Login: FunctionComponent<Props> = ({ navigation }) => {
+
+    const [isNewUser , setIsNewUser] = useState(true)
 
     return (
         <>
@@ -55,18 +67,15 @@ const Welcome: FunctionComponent<Props> = ({ navigation }) => {
                 <TopSection>
                         <BigText>NEB</BigText>
                         <BigText>ULA</BigText>
-
                         <RegularText>your thoughts, visualized.</RegularText>
                 </TopSection>
-                <BottomSection>
-                    <RegularButton gradient={gradients.landingprimary} onPress={() => {navigation.navigate('Home')}} btnStyles={{borderRadius: 35, height: "30%"}} gradStart={positions.left} gradEnd={positions.right}>
-                        E N T E R
-                    </RegularButton>
-                </BottomSection>
+                <FormSection>
+                    {isNewUser ? <RegisterForm/> : <LoginForm/>}
+                </FormSection>
                 </Gradient>
             </WelcomeContainer>
         </>
     )
 }
 
-export default Welcome
+export default Login

@@ -8,6 +8,7 @@ import MoodButton from '../Buttons/MoodButton'
 import { colors, gradients, positions , moods } from '../colors'
 import RegularText from '../Text/RegularText'
 import RegularButton from '../Buttons/RegularButton'
+import { BackHandler } from 'react-native'
 
 const SelectorView = styled.View`
     flex-direction: column
@@ -92,7 +93,7 @@ const MoodData = [
 
 interface MoodSelectorProps {
   submitHandler: ((moods: string[], seq: number) => void)
-  backhandler: (() => void)
+  backHandler: (() => void)
   seq?: number
 }
 
@@ -113,7 +114,7 @@ const MoodSelectorView : FunctionComponent<MoodSelectorProps> = (props) => {
     <SelectorView>
       <HeaderView>
           <RegularText>What is Your Mood?</RegularText>
-          <TransparentIconButton icon='back' onPress={() => {}} viewBox={'0 0 24 24'} btnStyles={{}}/>
+          <TransparentIconButton icon='back' onPress={props.backHandler} viewBox={'0 0 24 24'} btnStyles={{}}/>
       </HeaderView>
       <ScrollView>
         {MoodData.map((v, idx) => {

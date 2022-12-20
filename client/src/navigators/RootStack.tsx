@@ -5,28 +5,38 @@ import { NavigationContainer, useNavigationContainerRef } from '@react-navigatio
 import { createStackNavigator } from '@react-navigation/stack'
 //Custom Components
 import Welcome from '../screens/Welcome';
+import Login from '../screens/Login'
 import Home from '../screens/Home'
 import { colors } from '../components/colors';
 import Greeting from '../components/Header/Greeting'
 import Profile from '../components/Header/Profile'
 
 
-type RootStackParamList = {
+export type RootStackParamList = {
     Welcome: undefined;
     Home: undefined;
+    Login: undefined;
 }
+
+const forFade = ({ current }) => ({
+    cardStyle: {
+      opacity: current.progress,
+    },
+  });
 
 const Stack = createStackNavigator<RootStackParamList>()
 
 const RootStack: FunctionComponent = () => {
-    const navigationRef = useNavigationContainerRef();
+
 
   return (
-    <NavigationContainer ref={navigationRef}>
+    <NavigationContainer>
         <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="Login"
         screenOptions={{
             headerTransparent: true,
+            headerLeft: () => false,
+            cardStyleInterpolator: forFade,
             headerStyle: {
                 borderBottomWidth: 0,
                 shadowColor: 'transparent',
@@ -45,6 +55,11 @@ const RootStack: FunctionComponent = () => {
             <Stack.Screen 
                 name='Welcome'
                 component={Welcome}
+                options={{headerShown: false}}
+            />
+             <Stack.Screen 
+                name='Login'
+                component={Login}
                 options={{headerShown: false}}
             />
             <Stack.Screen 
