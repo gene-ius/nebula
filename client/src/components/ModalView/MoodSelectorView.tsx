@@ -92,6 +92,7 @@ const MoodData = [
 
 interface MoodSelectorProps {
   submitHandler: ((moods: string[], seq: number) => void)
+  backhandler: (() => void)
   seq?: number
 }
 
@@ -115,8 +116,9 @@ const MoodSelectorView : FunctionComponent<MoodSelectorProps> = (props) => {
           <TransparentIconButton icon='back' onPress={() => {}} viewBox={'0 0 24 24'} btnStyles={{}}/>
       </HeaderView>
       <ScrollView>
-        {MoodData.map((v) => {
+        {MoodData.map((v, idx) => {
                 return <MoodButton 
+                        key={idx}
                         onPress={moodTags.has(v.tag) ? () => {removeTag(v.tag)} : () => {addTag(v.tag)}} 
                         gradient={moodTags.has(v.tag) ? v.mood : moods.disabled} 
                         gradStart={positions.twothirds}

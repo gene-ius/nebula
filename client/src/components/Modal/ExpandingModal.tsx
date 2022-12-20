@@ -12,7 +12,7 @@ const Gradient = styled(LinearGradient).attrs({
 })`
   width: 100%
   height: 100%
-  borderRadius: 36
+  borderRadius: 36px
 
 `
 
@@ -37,7 +37,6 @@ interface ExpandingModalProps {
   isVisible: boolean
   animationIn: any
   animationOut: any
-//   onSwipeComplete: ((params: OnSwipeCompleteParams, gestureState: PanResponderGestureState) => void) | undefined
   dismissAction?: (() => void)
   hasBackdrop: boolean
   tab?: string | null

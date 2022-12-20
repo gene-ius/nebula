@@ -94,7 +94,8 @@ const Home: FunctionComponent = () => {
 
     const updateMoods = (moods: string[], seq: number) => {
         setMoodData(moods)
-        setComposerModalStep(2)
+        setComposerModalStep(0)
+        openSecondSeq()
     }
 
     const updateIdeas = (idea : Idea) => {
@@ -103,14 +104,19 @@ const Home: FunctionComponent = () => {
         
     }
 
+    const openSecondSeq = () => {
+        setComposerModalStep(2)
+    }
+
 
     const composerOpen = () => {
+        setComposerModalVisible(true)
         setComposerModalStep(1)
     }
 
     const composerExit = () => {
-        setComposerModalStep(0)
         setMoodData([])
+        setComposerModalVisible(false)
     }
 
   return (
@@ -134,21 +140,12 @@ const Home: FunctionComponent = () => {
                         <FilterView/>
                 </SlideOutModal>
                 <ExpandingModal
-                    isVisible={composerModalStep == 1}
+                    isVisible={isComposerModalVisible}
                     animationIn={'zoomIn'}
                     animationOut={'zoomOut'}
-                    hasBackdrop={true}
-                >
-                    <MoodSelectorView submitHandler={updateMoods} seq={1}/>
-                </ExpandingModal>
-                <ExpandingModal
-                    isVisible={composerModalStep == 2}
-                    animationIn={'zoomIn'}
-                    animationOut={'zoomOut'}
-                    dismissAction={composerExit}
                     hasBackdrop={true}
                     >
-                        <ComposerView submitHandler={updateIdeas} moodData={moodData}/>
+                       { composerModalStep == 1 ? <MoodSelectorView backhandler={composerExit} submitHandler={updateMoods} seq={1}/> : <ComposerView backHandler={composerExit} submitHandler={updateIdeas} moodData={moodData}/> }
                 </ExpandingModal>
             </ModalsContainer>
             <ButtonsContainer>

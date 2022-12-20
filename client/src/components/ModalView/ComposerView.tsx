@@ -103,6 +103,7 @@ const bodyInputTextStyleProps : StyleProp<TextStyle> = {
 
 interface ComposerProps {
     submitHandler: ((idea: Idea) => void)
+    backHandler:(() => void)
     moodData: string[]
 }
 
@@ -119,14 +120,18 @@ const HideKeyboard = ({children}) => (
 const ComposerView: FunctionComponent<ComposerProps> = (props) => {
     const [header, setHeader] = useState('') 
     const [body, setBody] = useState('')
-    const [mood, setMood] = useState('')
+
+    const clearIdea = () => {
+        setHeader('')
+        setBody('')
+    }
 
 
   return (
     <EditorView>
         <HeaderView>
             <RegularText textStyles={modalTitleTextProps}>Draft Your Idea ...</RegularText>
-            <TransparentIconButton icon='back' onPress={() => {}} viewBox={'0 0 24 24'} btnStyles={{}}/>
+            <TransparentIconButton icon='back' onPress={() => {clearIdea; props.backHandler}} viewBox={'0 0 24 24'} btnStyles={{}}/>
         </HeaderView>
         <InputView>
             <HideKeyboard>
@@ -143,7 +148,6 @@ const ComposerView: FunctionComponent<ComposerProps> = (props) => {
                 gradEnd={positions.right}
                 onPress={() => {
                     if (header == '' || body == '') return
-                    // setMood(props.mood)
                     const newIdea : Idea = {title: header, body: body, mood: props.moodData}
                     props.submitHandler(newIdea)
                 }} btnStyles={logBtnStyleProps} textStyles={{fontFamily:"ChakraPetch-Light", fontSize:20}}>LOG IDEA</RegularButton>
