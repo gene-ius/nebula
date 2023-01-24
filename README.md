@@ -1,10 +1,13 @@
 # NEBULA - your thoughts visualized.
 
-## APP PITCH
+## THE CONCEPT...
 
 The average person has 60,000 to 70,000 thoughts in a single day. Imagine how many world changing ideas just come and go without ever entering this reality. Even more intimately, how many of those thoughts are rooted in traumas or limited by preconcieved notions. Studies show that of those 60 to 70 thousand daily thoughts, 90%  stay the same. We need a better way to visualize and analyze our thoughts 
 
 Introducing Nebula - an idea logging app that visually represents & analyses all of your concious thoughts and ideas for better mindfullness. Don’t take your thoughts to Twitter. Grow your Nebula.  
+
+## CURRENT DEMO:
+
 
 ## Figma Design Thus Far.. 
 
