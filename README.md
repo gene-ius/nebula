@@ -13,6 +13,7 @@ https://user-images.githubusercontent.com/113053849/214424838-c2add0db-f730-406b
 ## Figma Design Thus Far.. 
 
 Check out the Figma file thus far! There's a component redesign on the horizon for the main UI...
+https://www.figma.com/file/rKK7GxtOTHRUDedPkCdlgp/Nebula?node-id=110%3A4906&t=pDy7ifTgB1uTDLEc-0
 
 ## Project Status (as of 24 Jan 2023... )
 
