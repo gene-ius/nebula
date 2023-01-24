@@ -1,9 +1,12 @@
-import React , {FunctionComponent} from 'react'
+import React  from 'react'
 import styled from 'styled-components/native'
 import {LinearGradient} from 'expo-linear-gradient'
+import TextTicker from 'react-native-text-ticker'
 
 import {colors , gradients ,positions} from '../colors'
 import SmallText from '../Text/SmallText'
+
+
 
 
 const Gradient = styled(LinearGradient).attrs({
@@ -36,9 +39,11 @@ const NewsBanner = () => {
   return (
     <FooterTabContainer>
         <Gradient>
-            <SmallText textStyles={{fontFamily:"Raleway-Regular" , fontSize: 17, paddingTop: 8}}>RANDOMIZED REEL</SmallText>
+            <SmallText textStyles={{fontFamily:"Raleway-Regular" , fontSize: 17, paddingTop: 8}}>RANDOM THOUGHT REEL</SmallText>
             <ReelContainer>
-                <SmallText textStyles={{textTransform: 'uppercase', fontSize: 20}}>this is something that has been on my mind for a while and i dont know how to explain it but ..</SmallText>
+                <TextTicker marqueeDelay={1000} duration={12000} repeatSpacer={25} loop >
+                  <SmallText textStyles={{textTransform: 'uppercase', fontSize: 20}}>this is something that has been on my mind for a while and i dont know how to explain it but this text is a filler fro when my database backend is up and running and idea node functionality is mapped</SmallText>
+                </TextTicker>
             </ReelContainer>
         </Gradient>
     </FooterTabContainer>

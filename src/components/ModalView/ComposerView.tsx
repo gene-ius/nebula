@@ -34,18 +34,19 @@ const HeaderView = styled.View`
 
 const InputView = styled.View`
     width: 97%
-    height: 75%
+    height: 90%
     marginTop: 2%
     border-radius: 30px
     align-self: center
     background-color: ${colors.backdark}
     innerShadow: 0px 4px 4px ${colors.shadow}
+    paddingBottom: -10%
 `
 
 const ButtonView = styled.View`
-    marginTop: 5%
     flexDirection: row
     justifyContent: space-around
+    top: -16%
 
 `
 
@@ -108,7 +109,7 @@ interface ComposerProps {
 }
 
 const HideKeyboard = ({children}) => (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} style={{height: '90%'}}>
             {children}
     </TouchableWithoutFeedback>
 )
@@ -133,12 +134,12 @@ const ComposerView: FunctionComponent<ComposerProps> = (props) => {
             <RegularText textStyles={modalTitleTextProps}>Draft Your Idea ...</RegularText>
             <TransparentIconButton icon='back' onPress={() => {clearIdea; console.log('idea cleared'); props.backHandler}} viewBox={'0 0 24 24'} btnStyles={{}}/>
         </HeaderView>
-        <InputView>
-            <HideKeyboard>
-                <HeaderInput onChangeText={(text) => setHeader(text)} placeholder='Title Your Thought...' placeholderTextColor={colors.graylight} style={headerInputTextStyleProps}/>
-                <BodyInput onChangeText={(text) => setBody(text)}multiline placeholder='What are you thinking?' placeholderTextColor={colors.graylight}  style={bodyInputTextStyleProps}></BodyInput>
-            </HideKeyboard>
-        </InputView>
+        <HideKeyboard >
+            <InputView>
+                    <HeaderInput onChangeText={(text) => setHeader(text)} placeholder='Title Your Thought...' placeholderTextColor={colors.graylight} style={headerInputTextStyleProps}/>
+                    <BodyInput onChangeText={(text) => setBody(text)}multiline placeholder='What are you thinking?' placeholderTextColor={colors.graylight}  style={bodyInputTextStyleProps}></BodyInput>
+            </InputView>
+        </HideKeyboard>
         <ButtonView>
             <ToggleIconButton onPress={()=> {}} icon={'image'} btnStyles={toggleBtnStyleProps} />
             <ToggleIconButton onPress={()=> {}} icon={'upload'} />

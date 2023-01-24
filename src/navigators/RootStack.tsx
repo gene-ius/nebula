@@ -32,7 +32,7 @@ const RootStack: FunctionComponent = () => {
   return (
     <NavigationContainer>
         <Stack.Navigator
-        initialRouteName="Login"
+        initialRouteName="Welcome"
         screenOptions={{
             headerTransparent: true,
             headerLeft: () => false,
