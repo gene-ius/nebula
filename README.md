@@ -8,6 +8,7 @@ Introducing Nebula - an idea logging app that visually represents & analyses all
 
 ## CURRENT DEMO:
 
+https://user-images.githubusercontent.com/113053849/214424838-c2add0db-f730-406b-827f-655880cb4f1f.mp4
 
 ## Figma Design Thus Far.. 
 
